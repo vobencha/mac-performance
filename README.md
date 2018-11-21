@@ -1,12 +1,10 @@
 # mac-performance
 
-Performance testing Mac Pros
-
 I've used the Geekbench suite to assess CPU and memory performance. It does not
 measure disk I/O so I'll find a different test for that. Ideally I'd run this
-test 100 times and take the average. Instead these results are a single run so
-bear that in mind. (That said, when run manually several times the output
-didn't vary much.)
+test 100 times and take the average but, in the interest of time, I've
+reported a single result so bear that in mind. (That said, when run manually
+several times the output didn't vary much.)
 
 Machines tested:  
 |merida2: | MacStadium machine running El Capitan
@@ -22,8 +20,7 @@ High-level result summary:
 |               | **merida2** | **macHV2** | **celaya2**
 | ------------- | ----------- | ---------- | ----------- 
 | **Topology**  | 1 processor, 12 cores, 24 threads | 1 processor, 12 cores, 24 threads | 1 processor, 23 cores
-| **Memory** | 65536 MB 1866 MHz DDR3 | 65536 MB 1866 MHz DDR3 | 57344 MB 667
-MHz DRAM
+| **Memory** | 65536 MB 1866 MHz DDR3 | 65536 MB 1866 MHz DDR3 | 57344 MB 667 MHz DRAM
 | | | |
 | **Single-core** | | |
 | Overall score | 3570 | 3582 | 3422
@@ -49,7 +46,7 @@ practice. As expected, the VM is slower to access memory (latency) and has a
 worse copy to bandwidth ratio. However, it isn't bad and is better than what I
 was expecting for a VM.
 
-Multi-core memory copy/bandwidth:  
+Multi-core memory copy-to-bandwidth ratio:  
 merida2: 98.9%  
 macHV2: 95.5%  
 celaya2: 92.4%  

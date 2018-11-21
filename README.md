@@ -3,14 +3,41 @@
 Performance testing Mac Pros
 
 I've used the Geekbench suite to assess CPU and memory performance. It does not
-test disk I/O so I'll find a different test for that. Ideally I'd run this test
-100 times and take the average. Instead I'm just reporting a single result so
+measure disk I/O so I'll find a different test for that. Ideally I'd run this
+test 100 times and take the average. Instead these results are a single run so
 bear that in mind. (That said, when run manually several times the output
 didn't vary much.)
 
-merida2: MacStadium machine running El Capitan  
-macHV2: New Mac Pro host (hypervisor) running Mojave  
-celaya2: New Mac Pro guest (VM on macHV2) running El Capitan  
+Machines tested:  
+|merida2: | MacStadium machine running El Capitan
+|macHV2: |New Mac Pro host (hypervisor) running Mojave
+|celaya2: |New Mac Pro guest (VM on macHV2) running El Capitan
+
+- Results
+
+Full results are available [here](https://vobencha.github.io/mac-performance/).
+
+High-level result summary:
+
+|               | **merida2** | **macHV2** | **celaya2**
+| ------------- | ----------- | ---------- | ----------- 
+| **Topology**  | 1 processor, 12 cores, 24 threads | 1 processor, 12 cores, 24 threads | 1 processor, 23 cores
+| **Memory** | 65536 MB 1866 MHz DDR3 | 65536 MB 1866 MHz DDR3 | 57344 MB 667
+MHz DRAM
+| | | |
+| **Single-core** | | |
+| Overall score | 3570 | 3582 | 3422
+| Memory score | 3512 | 3473 | 3384
+| Memory copy | 10.5 GB/sec | 10.4 GB/sec | 9.89 GB/sec
+| Memory latency | 74.2 ns | 74.5 ns | 77.4 ns
+| Memory bandwidth | 10.5 GB/sec | 10.3 GB/sec | 10.4 GB/sec
+| | | |
+| **Multi-core** | | |
+| Overall score | 28570 | 31194 | 25799 
+| Memory score | 5235 | 5232 | 4814 
+| Memory copy | 19.2 GB/sec | 18.9 GB/sec | 17.1 GB/sec
+| Memory latency | 75.6 ns | 76.6 ns | 83.1 ns
+| Memory bandwidth | 19.4 GB/sec | 19.8 GB/sec | 18.5 GB/sec
 
 - Cost of virtualization
 
@@ -47,26 +74,4 @@ would be good to manage the machines the same way.
 
 The virtualization approach also allows us to create images that can be used to
 configure future machines.
-
-
-|               | **merida2** | **macHV2** | **celaya2**
-| ------------- | ----------- | ---------- | ----------- 
-| **Topology**  | 1 processor, 12 cores, 24 threads | 1 processor, 12 cores, 24
-threads | 1 processor, 23 cores
-| **Memory** | 65536 MB 1866 MHz DDR3 | 65536 MB 1866 MHz DDR3 | 57344 MB 667
-MHz DRAM
-| | | |
-| **Single-core** | | |
-| Overall score | 3570 | 3582 | 3422
-| Memory score | 3512 | 3473 | 3384
-| Memory copy | 10.5 GB/sec | 10.4 GB/sec | 9.89 GB/sec
-| Memory latency | 74.2 ns | 74.5 ns | 77.4 ns
-| Memory bandwidth | 10.5 GB/sec | 10.3 GB/sec | 10.4 GB/sec
-| | | |
-| **Multi-core** | | |
-| Overall score | 28570 | 31194 | 25799 
-| Memory score | 5235 | 5232 | 4814 
-| Memory copy | 19.2 GB/sec | 18.9 GB/sec | 17.1 GB/sec
-| Memory latency | 75.6 ns | 76.6 ns | 83.1 ns
-| Memory bandwidth | 19.4 GB/sec | 19.8 GB/sec | 18.5 GB/sec
 
